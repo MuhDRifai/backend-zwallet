@@ -2,7 +2,7 @@ const Jwt = require('jsonwebtoken');
 const { redis } = require('../configs/redis');
 
 const genAccessToken = (payload, option) => new Promise((resolve, reject) => {
-  Jwt.sign(payload, process.env.ACCESS_SECRET_KEY, { ...option }, (err, token) => {
+  Jwt.sign(payload, "wibuelit", { ...option }, (err, token) => {
     if (err) {
       console.log(err);
       reject(err);
@@ -12,7 +12,7 @@ const genAccessToken = (payload, option) => new Promise((resolve, reject) => {
 });
 
 const genRefreshToken = (payload, option) => new Promise((resolve, reject) => {
-  Jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET_KEY, { ...option }, (err, token) => {
+  Jwt.sign(payload, "wibuelit", { ...option }, (err, token) => {
     if (err) {
       console.log(err);
       reject(err);

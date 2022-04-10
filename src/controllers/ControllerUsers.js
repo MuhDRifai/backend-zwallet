@@ -35,6 +35,7 @@ const register = async (req, res, next) => {
         delete dataUser.password;
         Jwt.sign({ ...dataUser }, process.env.VERIF_SECRET_KEY, { expiresIn: '24h' }, (err, token) => {
           if (err) {
+            console.log(err)
             responseError(res, 'Error', 500, 'Failed create activation token', err);
           } else {
             sendEmail(dataUser.email, token, `${form.first_name} ${form.last_name}`);

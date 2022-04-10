@@ -6,11 +6,13 @@ const cors = require('cors');
 const userRouter = require('./src/routes/Users');
 const mainRouter = require('./src/routes/Main');
 const { responseError } = require('./src/helpers/helpers');
+const morgan = require('morgan');
 
 const app = Express();
 const port = process.env.PORT;
 
 app.use(cors());
+app.use(morgan('dev'));
 app.use(Express.json());
 app.use(fileUpload());
 app.use('/public', Express.static(path.resolve('./public')));
